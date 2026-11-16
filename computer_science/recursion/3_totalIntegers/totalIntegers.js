@@ -1,6 +1,6 @@
 const myTotalIntegers = function(obj) {
     if (typeof obj !== 'object') return undefined;
-    if (obj === null || obj.length <= 0 || Object.keys(obj).length <= 0) return 0;
+    if (obj === null || Object.values(obj).length <= 0) return 0;
     let total = 0;
 
     const values = Array.isArray(obj) ? obj : Object.values(obj);
@@ -8,7 +8,7 @@ const myTotalIntegers = function(obj) {
     
     const iterables = values.filter(item => typeof item === 'object' && item !== null);
     iterables.forEach((v) => {
-        total += totalIntegers(v);
+        total += myTotalIntegers(v);
     });
 
     return total;
